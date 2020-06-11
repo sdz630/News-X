@@ -1,0 +1,13 @@
+
+gradle.ext.includeBaseSource = true
+if (gradle.ext.includeBaseSource) {
+    include ':base'
+}
+rootProject.name='NewsApp'
+include ':app'
+include ':base'
+include ':common'
+include ':news'
+include ':network'
+include ':usercenter'
+include ':webview'

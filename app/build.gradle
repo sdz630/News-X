@@ -1,0 +1,57 @@
+ext.mainApp = true
+apply from: rootProject.file('cc-settings-2.gradle')
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        if (project.ext.runAsApp) {
+            applicationId "com.sdz.newsapp"
+        }
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding{
+        enabled  true
+    }
+
+}
+
+dependencies {
+    implementation project(":network")
+    implementation project(":common")
+    addComponent "news"
+    addComponent "usercenter"
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.core:core-ktx:$project.ktxVersion"
+
+// androidx
+    implementation "androidx.appcompat:appcompat:$project.androidXVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$project.constraint_version"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$project.coordinator_version"
+    implementation "com.google.android.material:material:$rootProject.androidXVersion"
+    implementation 'q.rorbin:badgeview:1.1.3'
+
+}
+
