@@ -1,7 +1,6 @@
 package com.sdz.base.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.sdz.base.model.BaseCachedData
 import com.sdz.base.model.SuperBaseModel
 import java.lang.ref.Reference
 import java.lang.ref.WeakReference
@@ -25,8 +24,7 @@ abstract class MVVMBaseViewModel<V,M: SuperBaseModel<*>>:ViewModel(),IMVVMBaseVi
     override fun detachUI() {
         mUIRef?.clear()
         mUIRef = null
-        model?.cancel()
-
+        model.cancel()
     }
 
 }
